@@ -114,13 +114,13 @@ export default function Home() {
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.5, ease: "easeOut" }}
-        className={`sticky top-0 w-full z-50 transition-all duration-300 ${
+        className={`fixed top-4 left-1/2 -translate-x-1/2 w-[calc(100%-1.5rem)] sm:w-[calc(100%-2.5rem)] max-w-360 z-50 transition-all duration-300 rounded-full border ${
           isScrolled
-            ? "bg-bg-white/95 backdrop-blur-xl shadow-[0_4px_30px_rgba(30,45,90,0.08)] border-b border-primary/5"
-            : "bg-bg-white"
+            ? "bg-bg-white/90 backdrop-blur-xl border-primary/10 shadow-[0_12px_35px_rgba(30,45,90,0.14)]"
+            : "bg-bg-white/85 backdrop-blur-lg border-primary/10 shadow-[0_8px_22px_rgba(30,45,90,0.1)]"
         }`}
       >
-        <div className="max-w-360 mx-auto px-6 lg:px-12 h-20 flex items-center justify-between">
+        <div className="px-5 lg:px-8 h-20 flex items-center justify-between">
           {/* Logo */}
           <div className="flex items-center gap-2 cursor-pointer">
             <div className="w-8 h-8 rounded-full bg-linear-to-tr from-accent-teal to-accent-yellow flex items-center justify-center font-heading font-extrabold text-white">
@@ -211,7 +211,7 @@ export default function Home() {
         )}
       </AnimatePresence>
 
-      <main className="pt-20">
+      <main className="pt-28">
         {/* --- SECTION 1: HERO --- */}
         <section className="relative min-h-[calc(100vh-80px)] flex items-center justify-center overflow-hidden bg-bg-white pb-20">
           {/* Animated Gradient Blob */}
@@ -271,7 +271,7 @@ export default function Home() {
 
               <motion.p
                 variants={fadeUpVariant}
-                className="text-[17px] leading-[1.75] text-text-secondary max-w-[540px] mb-10"
+                className="text-[17px] leading-[1.75] text-text-secondary max-w-135 mb-10"
               >
                 Expert tutors. Inspiring subjects. Real results. Join hundreds
                 of families who trust The Tuition Club with their child&apos;s
@@ -315,14 +315,14 @@ export default function Home() {
               initial={{ opacity: 0, x: 40 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 1, delay: 0.2, ease: "easeOut" }}
-              className="relative lg:h-[600px] flex items-center justify-center p-8"
+              className="relative lg:h-150 flex items-center justify-center p-8"
             >
               <div
-                className="relative w-full aspect-4/5 max-w-[480px] rounded-[48px] border-8 border-white shadow-2xl overflow-hidden bg-bg-alt flex items-center justify-center"
+                className="relative w-full aspect-4/5 max-w-120 rounded-[48px] border-8 border-white shadow-2xl overflow-hidden bg-bg-alt flex items-center justify-center"
                 style={{
                   borderRadius: "40% 60% 70% 30% / 40% 50% 60% 50%",
                   backgroundImage:
-                    'url("https://images.unsplash.com/photo-1543269865-cbf427effbad?q=80&w=1400&auto=format&fit=crop")',
+                    'url("https://images.unsplash.com/photo-1503676260728-1c00da094a0b?q=80&w=1400&auto=format&fit=crop")',
                   backgroundSize: "cover",
                   backgroundPosition: "center",
                 }}
@@ -341,8 +341,9 @@ export default function Home() {
                 className="absolute top-[15%] left-0 bg-white rounded-2xl shadow-xl flex items-center gap-3 p-3 z-20 border border-primary/5"
               >
                 <div className="w-10 h-10 rounded-full overflow-hidden bg-bg-alt">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
-                    src="https://images.unsplash.com/photo-1503454537195-1dc534b36f61?q=80&w=200&auto=format&fit=crop"
+                    src="https://images.unsplash.com/photo-1544717305-2782549b5136?q=80&w=200&auto=format&fit=crop"
                     alt="Student"
                     className="w-full h-full object-cover"
                   />
@@ -420,27 +421,28 @@ export default function Home() {
               whileInView="visible"
               viewport={{ once: true, margin: "-50px" }}
               variants={staggerContainer}
-              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 auto-rows-[auto]"
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 auto-rows-auto"
             >
               {/* Feature 1: Large Bento Span */}
               <motion.div
                 variants={fadeUpVariant}
-                className="bg-white rounded-[32px] overflow-hidden shadow-sm border border-border-card md:col-span-2 lg:row-span-2 group relative"
+                className="bg-white rounded-4xl overflow-hidden shadow-sm border border-border-card md:col-span-2 lg:row-span-2 group relative"
               >
                 <div className="absolute inset-0 bg-linear-to-t from-primary/90 via-primary/40 to-transparent z-10 transition-opacity duration-300"></div>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
-                  src="https://images.unsplash.com/photo-1577896851231-70ef18881754?q=80&w=1000&auto=format&fit=crop"
+                  src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=1000&auto=format&fit=crop"
                   alt="Teacher"
                   className="w-full h-full object-cover absolute inset-0 group-hover:scale-105 transition-transform duration-700"
                 />
-                <div className="relative z-20 h-full flex flex-col justify-end p-8 lg:p-12 min-h-[300px] lg:min-h-full">
+                <div className="relative z-20 h-full flex flex-col justify-end p-8 lg:p-12 min-h-75 lg:min-h-full">
                   <div className="w-14 h-14 rounded-full bg-accent-teal text-white flex items-center justify-center mb-4">
                     <CheckCircle2 size={28} />
                   </div>
                   <h3 className="font-heading font-bold text-[28px] text-white mb-2">
                     Expert Tutors
                   </h3>
-                  <p className="text-white/80 text-[16px] leading-relaxed max-w-[340px]">
+                  <p className="text-white/80 text-[16px] leading-relaxed max-w-85">
                     Qualified, passionate teachers dedicated to uncovering and
                     nurturing each child&apos;s full academic potential.
                   </p>
@@ -450,7 +452,7 @@ export default function Home() {
               {/* Feature 2: Square */}
               <motion.div
                 variants={fadeUpVariant}
-                className="bg-white p-8 rounded-[32px] shadow-sm border border-border-card pb-16 group relative overflow-hidden transition-all hover:-translate-y-2 hover:shadow-xl hover:shadow-accent-coral/10"
+                className="bg-white p-8 rounded-4xl shadow-sm border border-border-card pb-16 group relative overflow-hidden transition-all hover:-translate-y-2 hover:shadow-xl hover:shadow-accent-coral/10"
               >
                 <div className="w-14 h-14 rounded-full bg-accent-coral/10 text-accent-coral flex items-center justify-center mb-6">
                   <Clock size={28} />
@@ -470,7 +472,7 @@ export default function Home() {
               {/* Feature 3: Square */}
               <motion.div
                 variants={fadeUpVariant}
-                className="bg-white p-8 rounded-[32px] shadow-sm border border-border-card pb-16 group relative overflow-hidden transition-all hover:-translate-y-2 hover:shadow-xl hover:shadow-accent-lavender/10"
+                className="bg-white p-8 rounded-4xl shadow-sm border border-border-card pb-16 group relative overflow-hidden transition-all hover:-translate-y-2 hover:shadow-xl hover:shadow-accent-lavender/10"
               >
                 <div className="w-14 h-14 rounded-full bg-accent-lavender/10 text-accent-lavender flex items-center justify-center mb-6">
                   <MessageSquareHeart size={28} />
@@ -490,7 +492,7 @@ export default function Home() {
               {/* Feature 4: Wide Span Bottom */}
               <motion.div
                 variants={fadeUpVariant}
-                className="bg-primary p-8 lg:p-10 rounded-[32px] shadow-sm border border-primary/20 md:col-span-2 group relative overflow-hidden"
+                className="bg-primary p-8 lg:p-10 rounded-4xl shadow-sm border border-primary/20 md:col-span-2 group relative overflow-hidden"
               >
                 <div
                   className="absolute right-0 top-0 w-1/2 h-full opacity-20"
@@ -507,7 +509,7 @@ export default function Home() {
                   <h3 className="font-heading font-bold text-[28px] text-white mb-3">
                     9 Core Subjects
                   </h3>
-                  <p className="text-white/70 text-[16px] max-w-[400px]">
+                  <p className="text-white/70 text-[16px] max-w-100">
                     A comprehensive curriculum ranging from foundational Maths
                     and Science to Arabic and Sport.
                   </p>
@@ -904,7 +906,7 @@ export default function Home() {
               {/* Vacancies Card */}
               <div
                 id="vacancies"
-                className="bg-accent-coral rounded-[32px] p-8 lg:p-10 shadow-2xl shadow-accent-coral/20 text-white relative overflow-hidden group transition-transform hover:-translate-y-2 duration-500"
+                className="bg-accent-coral rounded-4xl p-8 lg:p-10 shadow-2xl shadow-accent-coral/20 text-white relative overflow-hidden group transition-transform hover:-translate-y-2 duration-500"
               >
                 <div className="absolute -right-10 -top-10 text-white/10 group-hover:rotate-12 group-hover:scale-110 transition-transform duration-700 pointer-events-none">
                   <BookOpen size={160} />
@@ -923,7 +925,7 @@ export default function Home() {
                   <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-md rounded-full py-1.5 px-4 mb-6 border border-white/20">
                     <span className="w-2 h-2 rounded-full bg-accent-yellow animate-pulse shadow-[0_0_8px_#ffd166]"></span>
                     <span className="text-[11px] font-bold tracking-wide uppercase">
-                      We're Hiring
+                      We&apos;re Hiring
                     </span>
                   </div>
                   <h3 className="font-heading font-extrabold text-[32px] mb-3 leading-tight">
@@ -975,7 +977,7 @@ export default function Home() {
                   name: "Sarah J.",
                   year: "Parent of Year 6 student",
                   image:
-                    "https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=200&auto=format&fit=crop",
+                    "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?q=80&w=200&auto=format&fit=crop",
                 },
                 {
                   quote:
@@ -983,7 +985,7 @@ export default function Home() {
                   name: "Mohammed A.",
                   year: "Parent of Year 8 student",
                   image:
-                    "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=200&auto=format&fit=crop",
+                    "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=200&auto=format&fit=crop",
                 },
                 {
                   quote:
@@ -991,7 +993,7 @@ export default function Home() {
                   name: "Emma T.",
                   year: "Parent of Year 11 student",
                   image:
-                    "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=200&auto=format&fit=crop",
+                    "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?q=80&w=200&auto=format&fit=crop",
                 },
               ].map((test, i) => (
                 <motion.div
@@ -999,7 +1001,7 @@ export default function Home() {
                   variants={fadeUpVariant}
                   className="bg-white p-8 rounded-4xl shadow-sm border border-border-card relative hover:-translate-y-2 hover:shadow-xl hover:shadow-primary/5 transition-all duration-500 overflow-hidden group"
                 >
-                  <div className="absolute top-0 right-0 w-32 h-32 bg-accent-teal/5 rounded-bl-[100px] pointer-events-none -z-0"></div>
+                  <div className="absolute top-0 right-0 w-32 h-32 bg-accent-teal/5 rounded-bl-[100px] pointer-events-none z-0"></div>
                   <Quote
                     size={40}
                     className="text-accent-teal/10 absolute top-8 right-8 group-hover:scale-110 group-hover:text-accent-teal/20 transition-all duration-500"
@@ -1017,6 +1019,7 @@ export default function Home() {
 
                   <div className="relative z-10 flex items-center gap-4 border-t border-border-card pt-6">
                     <div className="w-14 h-14 rounded-full overflow-hidden bg-bg-alt border-2 border-white shadow-md">
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
                       <img
                         src={test.image}
                         alt={test.name}
@@ -1062,7 +1065,6 @@ export default function Home() {
               viewport={{ once: true }}
               className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md rounded-full py-2 px-6 mb-8 border border-white/20 shadow-xl"
             >
-              <span className="text-xl">🚀</span>
               <span className="text-[13px] font-bold tracking-widest uppercase">
                 Start Your Journey
               </span>
