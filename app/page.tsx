@@ -322,7 +322,7 @@ export default function Home() {
                 style={{
                   borderRadius: "40% 60% 70% 30% / 40% 50% 60% 50%",
                   backgroundImage:
-                    'url("https://images.unsplash.com/photo-1503676260728-1c00da094a0b?q=80&w=1400&auto=format&fit=crop")',
+                    'url("https://images.unsplash.com/photo-1610484826917-0f101a7bf7f4?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")',
                   backgroundSize: "cover",
                   backgroundPosition: "center",
                 }}
@@ -343,7 +343,7 @@ export default function Home() {
                 <div className="w-10 h-10 rounded-full overflow-hidden bg-bg-alt">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
-                    src="https://images.unsplash.com/photo-1544717305-2782549b5136?q=80&w=200&auto=format&fit=crop"
+                    src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                     alt="Student"
                     className="w-full h-full object-cover"
                   />
@@ -431,7 +431,8 @@ export default function Home() {
                 <div className="absolute inset-0 bg-linear-to-t from-primary/90 via-primary/40 to-transparent z-10 transition-opacity duration-300"></div>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
-                  src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=1000&auto=format&fit=crop"
+                  // https://plus.unsplash.com/premium_photo-1726704057266-41edf6adae1b?q=80&w=1261&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
+                  src="https://plus.unsplash.com/premium_photo-1661963653272-02b2a35d8d64?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                   alt="Teacher"
                   className="w-full h-full object-cover absolute inset-0 group-hover:scale-105 transition-transform duration-700"
                 />
