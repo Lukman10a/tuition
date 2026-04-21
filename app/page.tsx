@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import Link from "next/link";
 import { motion, AnimatePresence, Variants } from "framer-motion";
 import {
   Menu,
@@ -65,12 +66,23 @@ const InstagramIcon = ({ size = 24, className = "" }) => (
 
 // Add specific classes to Tailwind
 const NAV_LINKS = [
-  "Subjects",
   "Info & Prices",
   "Online Tuition",
   "Register",
   "Gallery",
   "Vacancies",
+];
+
+const SUBJECT_LINKS = [
+  { label: "Art", slug: "art" },
+  { label: "Arabic", slug: "arabic" },
+  { label: "Computing", slug: "computing" },
+  { label: "English", slug: "english" },
+  { label: "Geography", slug: "geography" },
+  { label: "History", slug: "history" },
+  { label: "Science", slug: "science" },
+  { label: "Maths", slug: "maths" },
+  { label: "Sports", slug: "sport" },
 ];
 
 export default function Home() {
@@ -133,6 +145,34 @@ export default function Home() {
 
           {/* Desktop Nav Links */}
           <div className="hidden lg:flex items-center gap-8">
+            <div className="relative group">
+              <button className="text-[15px] font-medium text-primary relative flex items-center gap-1 cursor-pointer">
+                Subjects
+                <ChevronDown
+                  size={16}
+                  className="text-primary/70 group-hover:rotate-180 transition-transform duration-300"
+                />
+                <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-accent-teal rounded-full"></span>
+              </button>
+
+              <div className="absolute left-0 top-full pt-5 opacity-0 invisible translate-y-2 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 transition-all duration-300 z-50">
+                <div className="w-64 rounded-3xl border border-primary/10 bg-white/95 backdrop-blur-xl shadow-[0_20px_40px_rgba(30,45,90,0.15)] p-4">
+                  <ul className="space-y-1">
+                    {SUBJECT_LINKS.map((subject) => (
+                      <li key={subject.slug}>
+                        <Link
+                          href={`/subjects/${subject.slug}`}
+                          className="block rounded-2xl px-4 py-2.5 text-[15px] font-medium text-primary/80 hover:text-primary hover:bg-bg-alt transition-all duration-200"
+                        >
+                          {subject.label}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </div>
+
             {NAV_LINKS.map((link) => (
               <a
                 key={link}
@@ -189,6 +229,25 @@ export default function Home() {
             className="fixed inset-0 z-40 bg-bg-white pt-24 px-6 lg:hidden flex flex-col"
           >
             <div className="flex flex-col gap-6 text-2xl font-heading font-bold text-primary">
+              <details className="group">
+                <summary className="list-none cursor-pointer flex items-center justify-between">
+                  Subjects
+                  <ChevronDown className="group-open:rotate-180 transition-transform duration-300" />
+                </summary>
+                <ul className="mt-4 ml-2 space-y-3 text-lg font-semibold text-primary/80">
+                  {SUBJECT_LINKS.map((subject) => (
+                    <li key={subject.slug}>
+                      <Link
+                        href={`/subjects/${subject.slug}`}
+                        onClick={() => setMobileMenuOpen(false)}
+                      >
+                        {subject.label}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </details>
+
               {NAV_LINKS.map((link) => (
                 <a
                   key={link}
@@ -548,92 +607,106 @@ export default function Home() {
               {[
                 {
                   name: "Science",
+                  slug: "science",
                   desc: "Physics, Chemistry, and Biology.",
                   color: "#FFD166",
                   icon: FlaskConical,
                 },
                 {
                   name: "Maths",
+                  slug: "maths",
                   desc: "Building strong numerical foundations.",
                   color: "#06D6A0",
                   icon: Calculator,
                 },
                 {
                   name: "History",
+                  slug: "history",
                   desc: "Discovering our past, understanding our future.",
                   color: "#FF6B6B",
                   icon: ScrollText,
                 },
                 {
                   name: "Geography",
+                  slug: "geography",
                   desc: "Exploring the world and its environments.",
                   color: "#A78BFA",
                   icon: Globe,
                 },
                 {
                   name: "English",
+                  slug: "english",
                   desc: "Mastering language, literature, and expression.",
                   color: "#2ABFBF",
                   icon: BookOpen,
                 },
                 {
                   name: "Computing",
+                  slug: "computing",
                   desc: "Coding, logic, and digital literacy.",
                   color: "#1E2D5A",
                   icon: Monitor,
                 },
                 {
                   name: "Arabic",
+                  slug: "arabic",
                   desc: "Language learning and calligraphy skills.",
                   color: "#FF9F43",
                   icon: Languages,
                 },
                 {
                   name: "Art",
+                  slug: "art",
                   desc: "Unlocking creativity and expression.",
                   color: "#FF6EB4",
                   icon: Palette,
                 },
                 {
                   name: "Sport",
+                  slug: "sport",
                   desc: "Physical education and teamwork.",
                   color: "#48CAE4",
                   icon: Trophy,
                 },
               ].map((subject, i) => (
-                <motion.div
+                <Link
                   key={i}
-                  variants={fadeUpVariant}
-                  className="bg-bg-card rounded-3xl p-8 relative group transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-primary/5 cursor-pointer overflow-hidden border border-border-card"
+                  href={`/subjects/${subject.slug}`}
+                  className="block"
                 >
-                  {/* Hover pattern background */}
-                  <div className="absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-500 bg-[radial-gradient(#1E2D5A_1px,transparent_1px)] bg-size-[16px_16px]"></div>
+                  <motion.div
+                    variants={fadeUpVariant}
+                    className="bg-bg-card rounded-3xl p-8 relative group transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-primary/5 cursor-pointer overflow-hidden border border-border-card"
+                  >
+                    {/* Hover pattern background */}
+                    <div className="absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-500 bg-[radial-gradient(#1E2D5A_1px,transparent_1px)] bg-size-[16px_16px]"></div>
 
-                  <div
-                    className="absolute top-0 left-0 w-full h-2 transition-all duration-300 group-hover:h-36 right-0"
-                    style={{ backgroundColor: subject.color }}
-                  />
-                  <div className="relative z-10">
-                    <div className="flex items-start justify-between mb-10 mt-2">
-                      <div className="w-14 h-14 rounded-2xl flex items-center justify-center bg-white text-primary shadow-sm border border-black/5 group-hover:-translate-y-1 transition-transform duration-300 relative overflow-hidden">
-                        <div
-                          className="absolute right-0 top-0 w-full h-full opacity-20"
-                          style={{ backgroundColor: subject.color }}
-                        ></div>
-                        <subject.icon size={26} className="relative z-10" />
+                    <div
+                      className="absolute top-0 left-0 w-full h-2 transition-all duration-300 group-hover:h-36 right-0"
+                      style={{ backgroundColor: subject.color }}
+                    />
+                    <div className="relative z-10">
+                      <div className="flex items-start justify-between mb-10 mt-2">
+                        <div className="w-14 h-14 rounded-2xl flex items-center justify-center bg-white text-primary shadow-sm border border-black/5 group-hover:-translate-y-1 transition-transform duration-300 relative overflow-hidden">
+                          <div
+                            className="absolute right-0 top-0 w-full h-full opacity-20"
+                            style={{ backgroundColor: subject.color }}
+                          ></div>
+                          <subject.icon size={26} className="relative z-10" />
+                        </div>
+                        <div className="w-8 h-8 rounded-full bg-white/40 backdrop-blur-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                          <ArrowRight size={16} className="text-primary" />
+                        </div>
                       </div>
-                      <div className="w-8 h-8 rounded-full bg-white/40 backdrop-blur-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        <ArrowRight size={16} className="text-primary" />
-                      </div>
+                      <h3 className="font-heading font-extrabold text-[26px] text-primary mb-2 group-hover:text-white transition-colors duration-300">
+                        {subject.name}
+                      </h3>
+                      <p className="text-[15px] text-text-secondary group-hover:text-primary transition-colors duration-300 font-medium">
+                        {subject.desc}
+                      </p>
                     </div>
-                    <h3 className="font-heading font-extrabold text-[26px] text-primary mb-2 group-hover:text-white transition-colors duration-300">
-                      {subject.name}
-                    </h3>
-                    <p className="text-[15px] text-text-secondary group-hover:text-primary transition-colors duration-300 font-medium">
-                      {subject.desc}
-                    </p>
-                  </div>
-                </motion.div>
+                  </motion.div>
+                </Link>
               ))}
             </motion.div>
 
@@ -1161,24 +1234,14 @@ export default function Home() {
             <div>
               <h4 className="font-bold text-[18px] mb-6">Subjects</h4>
               <ul className="grid grid-cols-2 gap-3">
-                {[
-                  "Science",
-                  "Maths",
-                  "History",
-                  "Geography",
-                  "English",
-                  "Computing",
-                  "Arabic",
-                  "Art",
-                  "Sport",
-                ].map((sub) => (
-                  <li key={sub}>
-                    <a
-                      href="#"
+                {SUBJECT_LINKS.map((subject) => (
+                  <li key={subject.slug}>
+                    <Link
+                      href={`/subjects/${subject.slug}`}
                       className="text-white/60 hover:text-accent-yellow transition-colors text-[15px]"
                     >
-                      {sub}
-                    </a>
+                      {subject.label}
+                    </Link>
                   </li>
                 ))}
               </ul>
