@@ -89,7 +89,7 @@ export default function Navigation() {
         <div className="px-5 lg:px-8 h-20 flex items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2 cursor-pointer">
-            <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-accent-teal to-accent-yellow flex items-center justify-center font-heading font-extrabold text-white">
+            <div className="w-8 h-8 rounded-full bg-linear-to-tr from-accent-teal to-accent-yellow flex items-center justify-center font-heading font-extrabold text-white">
               TC
             </div>
             <span className="font-heading font-extrabold text-lg text-primary tracking-tight">
@@ -156,7 +156,7 @@ export default function Navigation() {
             </div>
             <Link
               href="#register"
-              className="px-6 py-2.5 rounded-full bg-gradient-to-r from-accent-teal to-accent-teal/80 text-white font-semibold text-[14px] hover:shadow-lg transition-all duration-300 hover:scale-105"
+              className="px-6 py-2.5 rounded-full bg-linear-to-r from-accent-teal to-accent-teal/80 text-white font-semibold text-[14px] hover:shadow-lg transition-all duration-300 hover:scale-105"
             >
               Register
             </Link>
@@ -221,7 +221,7 @@ export default function Navigation() {
                 </div>
               </div>
 
-              <button className="w-full mt-4 px-6 py-3 rounded-full bg-gradient-to-r from-accent-teal to-accent-teal/80 text-white font-semibold hover:shadow-lg transition-all">
+              <button className="w-full mt-4 px-6 py-3 rounded-full bg-linear-to-r from-accent-teal to-accent-teal/80 text-white font-semibold hover:shadow-lg transition-all">
                 Register
               </button>
             </div>

@@ -52,7 +52,7 @@ const footerVariants = {
   visible: (i: number) => ({
     opacity: 1,
     y: 0,
-    transition: { delay: i * 0.1, duration: 0.6, ease: "easeOut" },
+    transition: { delay: i * 0.1, duration: 0.6, ease: "easeOut" as const },
   }),
 };
 
@@ -110,15 +110,15 @@ export default function Footer() {
               viewport={{ once: true }}
             >
               <div className="flex items-center gap-2 mb-4">
-                <div className="w-10 h-10 rounded-full bg-gradient-to-tr from-accent-teal to-accent-yellow flex items-center justify-center font-heading font-extrabold">
+                <div className="w-10 h-10 rounded-full bg-linear-to-tr from-accent-teal to-accent-yellow flex items-center justify-center font-heading font-extrabold">
                   TC
                 </div>
                 <span className="font-heading font-extrabold text-lg">
                   The Tuition Club
                 </span>
               </div>
-              <p className="text-white/70 leading-relaxed mb-6">
-                UK's trusted tuition provider offering expert tutoring across
+               <p className="text-white/70 leading-relaxed mb-6">
+                UK&apos;s trusted tuition provider offering expert tutoring across
                 all subjects for students from primary through GCSE level.
               </p>
               <div className="flex gap-3">
@@ -188,21 +188,21 @@ export default function Footer() {
                   href="tel:+441234567890"
                   className="flex items-center gap-3 text-white/70 hover:text-accent-teal transition-colors"
                 >
-                  <Phone size={18} className="flex-shrink-0" />
+                  <Phone size={18} className="shrink-0" />
                   <span>+44 (0) 161 XXXX XXXX</span>
                 </a>
                 <a
                   href="mailto:info@thetuitionclub.co.uk"
                   className="flex items-center gap-3 text-white/70 hover:text-accent-teal transition-colors"
                 >
-                  <Mail size={18} className="flex-shrink-0" />
+                  <Mail size={18} className="shrink-0" />
                   <span>info@thetuitionclub.co.uk</span>
                 </a>
                 <a
                   href="#"
                   className="flex items-start gap-3 text-white/70 hover:text-accent-teal transition-colors"
                 >
-                  <MapPin size={18} className="flex-shrink-0 mt-1" />
+                  <MapPin size={18} className="shrink-0 mt-1" />
                   <span>Manchester, UK</span>
                 </a>
               </div>

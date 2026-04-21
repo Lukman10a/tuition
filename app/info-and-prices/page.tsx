@@ -181,7 +181,7 @@ export default function InfoAndPricesPage() {
                   className="p-6 rounded-2xl bg-white border border-primary/10 hover:border-accent-teal/30 transition-all duration-300 hover:shadow-lg hover:-translate-y-1"
                 >
                   <div
-                    className={`w-12 h-12 rounded-lg bg-gradient-to-br ${feature.color} to-accent-teal/50 flex items-center justify-center text-white mb-4`}
+                    className={`w-12 h-12 rounded-lg bg-linear-to-br ${feature.color} to-accent-teal/50 flex items-center justify-center text-white mb-4`}
                   >
                     <IconComponent size={24} />
                   </div>
@@ -575,7 +575,7 @@ export default function InfoAndPricesPage() {
 
       {/* Online Tuition Features */}
       <motion.section
-        className="py-20 px-4 bg-gradient-to-br from-primary to-primary/80"
+        className="py-20 px-4 bg-linear-to-br from-primary to-primary/80"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         transition={{ duration: 0.8 }}
@@ -683,7 +683,7 @@ export default function InfoAndPricesPage() {
             </p>
             <Link
               href="#register"
-              className="inline-block px-8 py-4 rounded-full bg-gradient-to-r from-accent-teal to-accent-teal/80 text-white font-heading font-bold hover:shadow-xl transition-all duration-300 hover:scale-105"
+              className="inline-block px-8 py-4 rounded-full bg-linear-to-r from-accent-teal to-accent-teal/80 text-white font-heading font-bold hover:shadow-xl transition-all duration-300 hover:scale-105"
             >
               Register Today
             </Link>
