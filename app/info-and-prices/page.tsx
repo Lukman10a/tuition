@@ -3,15 +3,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import {
-  Clock,
-  BookOpen,
-  Users,
-  Award,
-  Check,
-  ChevronDown,
-  ChevronUp,
-} from "lucide-react";
+import { Clock, BookOpen, Users, Award } from "lucide-react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 
@@ -33,10 +25,25 @@ const containerVariants = {
 };
 
 export default function InfoAndPricesPage() {
-  const [expandedGCSE, setExpandedGCSE] = useState(false);
   const [selectedTab, setSelectedTab] = useState<
     "primary" | "secondary" | "gcse"
   >("primary");
+
+  type PrimaryRow = {
+    subject: string;
+    times: number;
+    ks1ks2: string;
+    ks3: string;
+    gcse: string;
+    highlight?: boolean;
+  };
+
+  type GCSERow = {
+    subject: string;
+    times: number | string;
+    price: string;
+    highlight?: boolean;
+  };
 
   const pricingData = {
     primary: [
@@ -81,7 +88,7 @@ export default function InfoAndPricesPage() {
         gcse: "£68 *",
         highlight: true,
       },
-    ],
+    ] as PrimaryRow[],
     gcse: [
       { subject: "Maths", times: 2, price: "£15" },
       { subject: "English", times: 2, price: "£15" },
@@ -94,7 +101,7 @@ export default function InfoAndPricesPage() {
         price: "£64 *",
         highlight: true,
       },
-    ],
+    ] as GCSERow[],
   };
 
   const features = [
@@ -130,7 +137,7 @@ export default function InfoAndPricesPage() {
 
       {/* Hero Section */}
       <motion.section
-        className="relative pt-40 pb-20 px-4 bg-gradient-to-br from-primary/5 via-transparent to-primary/5 overflow-hidden"
+        className="relative pt-40 pb-20 px-4 bg-linear-to-br from-primary/5 via-transparent to-primary/5 overflow-hidden"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8 }}
@@ -252,7 +259,7 @@ export default function InfoAndPricesPage() {
                 key={i}
                 variants={fadeInUp}
                 custom={i}
-                className="p-8 rounded-2xl bg-gradient-to-br from-bg-alt to-bg-card border border-primary/10 hover:border-accent-teal/30 transition-all duration-300"
+                className="p-8 rounded-2xl bg-linear-to-br from-bg-alt to-bg-card border border-primary/10 hover:border-accent-teal/30 transition-all duration-300"
               >
                 <div className="text-4xl mb-4">{item.icon}</div>
                 <h3 className="text-xl font-heading font-bold text-primary mb-3">
@@ -269,7 +276,7 @@ export default function InfoAndPricesPage() {
 
       {/* Pricing Section */}
       <motion.section
-        className="py-20 px-4 bg-gradient-to-br from-primary/5 via-white to-primary/5"
+        className="py-20 px-4 bg-linear-to-br from-primary/5 via-white to-primary/5"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         transition={{ duration: 0.8 }}
@@ -335,7 +342,7 @@ export default function InfoAndPricesPage() {
           >
             <table className="w-full">
               <thead>
-                <tr className="bg-gradient-to-r from-primary to-primary/80 text-white">
+                <tr className="bg-linear-to-r from-primary to-primary/80 text-white">
                   <th className="px-6 py-4 text-left font-heading font-bold">
                     Subject
                   </th>
@@ -363,40 +370,36 @@ export default function InfoAndPricesPage() {
                 </tr>
               </thead>
               <tbody>
-                {(selectedTab === "primary"
-                  ? pricingData.primary
-                  : pricingData.gcse
-                ).map((row, i) => (
-                  <motion.tr
-                    key={i}
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ delay: i * 0.05, duration: 0.4 }}
-                    viewport={{ once: true }}
-                    className={`border-t border-primary/10 hover:bg-bg-alt transition-colors ${
-                      row.highlight ? "bg-accent-teal/5" : ""
-                    }`}
-                  >
-                    <td
-                      className={`px-6 py-4 font-semibold ${
-                        row.highlight
-                          ? "text-primary font-heading font-extrabold"
-                          : "text-text-secondary"
-                      }`}
-                    >
-                      {row.subject}
-                    </td>
-                    <td
-                      className={`px-6 py-4 text-center ${
-                        row.highlight
-                          ? "text-primary font-heading font-extrabold"
-                          : "text-text-secondary"
-                      }`}
-                    >
-                      {row.times}
-                    </td>
-                    {selectedTab === "primary" && (
-                      <>
+                {selectedTab === "primary"
+                  ? pricingData.primary.map((row, i) => (
+                      <motion.tr
+                        key={i}
+                        initial={{ opacity: 0, x: -20 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        transition={{ delay: i * 0.05, duration: 0.4 }}
+                        viewport={{ once: true }}
+                        className={`border-t border-primary/10 hover:bg-bg-alt transition-colors ${
+                          row.highlight ? "bg-accent-teal/5" : ""
+                        }`}
+                      >
+                        <td
+                          className={`px-6 py-4 font-semibold ${
+                            row.highlight
+                              ? "text-primary font-heading font-extrabold"
+                              : "text-text-secondary"
+                          }`}
+                        >
+                          {row.subject}
+                        </td>
+                        <td
+                          className={`px-6 py-4 text-center ${
+                            row.highlight
+                              ? "text-primary font-heading font-extrabold"
+                              : "text-text-secondary"
+                          }`}
+                        >
+                          {row.times}
+                        </td>
                         <td
                           className={`px-6 py-4 text-center font-semibold ${
                             row.highlight
@@ -424,21 +427,48 @@ export default function InfoAndPricesPage() {
                         >
                           {row.gcse}
                         </td>
-                      </>
-                    )}
-                    {selectedTab === "gcse" && (
-                      <td
-                        className={`px-6 py-4 text-center font-semibold ${
-                          row.highlight
-                            ? "text-primary font-heading font-extrabold"
-                            : "text-accent-teal"
+                      </motion.tr>
+                    ))
+                  : pricingData.gcse.map((row, i) => (
+                      <motion.tr
+                        key={i}
+                        initial={{ opacity: 0, x: -20 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        transition={{ delay: i * 0.05, duration: 0.4 }}
+                        viewport={{ once: true }}
+                        className={`border-t border-primary/10 hover:bg-bg-alt transition-colors ${
+                          row.highlight ? "bg-accent-teal/5" : ""
                         }`}
                       >
-                        {(row as any).price}
-                      </td>
-                    )}
-                  </motion.tr>
-                ))}
+                        <td
+                          className={`px-6 py-4 font-semibold ${
+                            row.highlight
+                              ? "text-primary font-heading font-extrabold"
+                              : "text-text-secondary"
+                          }`}
+                        >
+                          {row.subject}
+                        </td>
+                        <td
+                          className={`px-6 py-4 text-center ${
+                            row.highlight
+                              ? "text-primary font-heading font-extrabold"
+                              : "text-text-secondary"
+                          }`}
+                        >
+                          {row.times}
+                        </td>
+                        <td
+                          className={`px-6 py-4 text-center font-semibold ${
+                            row.highlight
+                              ? "text-primary font-heading font-extrabold"
+                              : "text-accent-teal"
+                          }`}
+                        >
+                          {row.price}
+                        </td>
+                      </motion.tr>
+                    ))}
               </tbody>
             </table>
           </motion.div>
@@ -515,11 +545,11 @@ export default function InfoAndPricesPage() {
                 key={i}
                 variants={fadeInUp}
                 custom={i}
-                className={`p-8 rounded-2xl bg-gradient-to-r from-${discount.color}/10 to-transparent border border-${discount.color}/30 hover:border-${discount.color}/60 transition-all duration-300`}
+                className={`p-8 rounded-2xl bg-linear-to-r from-${discount.color}/10 to-transparent border border-${discount.color}/30 hover:border-${discount.color}/60 transition-all duration-300`}
               >
                 <div className="flex items-start gap-4">
                   <div
-                    className={`w-12 h-12 rounded-lg bg-${discount.color} text-white flex items-center justify-center flex-shrink-0 text-xl font-bold`}
+                    className={`w-12 h-12 rounded-lg bg-${discount.color} text-white flex items-center justify-center shrink-0 text-xl font-bold`}
                   >
                     ✓
                   </div>
