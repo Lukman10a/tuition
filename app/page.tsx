@@ -66,11 +66,11 @@ const InstagramIcon = ({ size = 24, className = "" }) => (
 
 // Add specific classes to Tailwind
 const NAV_LINKS = [
-  "Info & Prices",
-  "Online Tuition",
-  "Register",
-  "Gallery",
-  "Vacancies",
+  { label: "Info & Prices", href: "/info-and-prices" },
+  { label: "Online Tuition", href: "/online-tuition" },
+  { label: "Register", href: "#register" },
+  { label: "Gallery", href: "#gallery" },
+  { label: "Vacancies", href: "#vacancies" },
 ];
 
 const SUBJECT_LINKS = [
@@ -174,14 +174,14 @@ export default function Home() {
             </div>
 
             {NAV_LINKS.map((link) => (
-              <a
-                key={link}
-                href={`#${link.toLowerCase().replace(/\s+/g, "-")}`}
+              <Link
+                key={link.href}
+                href={link.href}
                 className="text-[15px] font-medium text-primary relative group"
               >
-                {link}
+                {link.label}
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-accent-teal transition-all duration-300 group-hover:w-full rounded-full"></span>
-              </a>
+              </Link>
             ))}
           </div>
 
@@ -249,13 +249,13 @@ export default function Home() {
               </details>
 
               {NAV_LINKS.map((link) => (
-                <a
-                  key={link}
-                  href={`#${link.toLowerCase().replace(/\s+/g, "-")}`}
+                <Link
+                  key={link.href}
+                  href={link.href}
                   onClick={() => setMobileMenuOpen(false)}
                 >
-                  {link}
-                </a>
+                  {link.label}
+                </Link>
               ))}
             </div>
             <div className="mt-8 flex flex-col gap-4">
@@ -1218,13 +1218,13 @@ export default function Home() {
               <h4 className="font-bold text-[18px] mb-6">Quick Links</h4>
               <ul className="space-y-3">
                 {NAV_LINKS.map((link) => (
-                  <li key={link}>
-                    <a
-                      href="#"
+                  <li key={link.href}>
+                    <Link
+                      href={link.href}
                       className="text-white/60 hover:text-accent-teal transition-colors text-[15px]"
                     >
-                      {link}
-                    </a>
+                      {link.label}
+                    </Link>
                   </li>
                 ))}
               </ul>
