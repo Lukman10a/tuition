@@ -114,12 +114,13 @@ export default function Footer() {
                   TC
                 </div>
                 <span className="font-heading font-extrabold text-lg">
-                  The Tuition Club
+                  The Tuition
                 </span>
               </div>
-               <p className="text-white/70 leading-relaxed mb-6">
-                UK&apos;s trusted tuition provider offering expert tutoring across
-                all subjects for students from primary through GCSE level.
+              <p className="text-white/70 leading-relaxed mb-6">
+                UK&apos;s trusted tuition provider offering expert tutoring
+                across all subjects for students from primary through GCSE
+                level.
               </p>
               <div className="flex gap-3">
                 <a
@@ -192,11 +193,11 @@ export default function Footer() {
                   <span>+44 (0) 161 XXXX XXXX</span>
                 </a>
                 <a
-                  href="mailto:info@thetuitionclub.co.uk"
+                  href="mailto:info@thetuition.co.uk"
                   className="flex items-center gap-3 text-white/70 hover:text-accent-teal transition-colors"
                 >
                   <Mail size={18} className="shrink-0" />
-                  <span>info@thetuitionclub.co.uk</span>
+                  <span>info@thetuition.co.uk</span>
                 </a>
                 <a
                   href="#"
@@ -249,8 +250,8 @@ export default function Footer() {
         <div className="max-w-6xl mx-auto">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-white/60 text-sm">
             <p>
-              &copy; {currentYear} The Tuition Club. All rights reserved.
-              Serving Manchester and online students globally.
+              &copy; {currentYear} The Tuition. All rights reserved. Serving
+              Manchester and online students globally.
             </p>
             <div className="flex gap-6">
               <Link

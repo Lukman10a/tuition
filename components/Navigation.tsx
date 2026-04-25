@@ -75,37 +75,44 @@ export default function Navigation() {
 
   return (
     <>
-      {/* Desktop Navigation */}
+      <div className="w-full bg-primary text-white text-center py-2.5 text-[13px] font-semibold tracking-wide flex items-center justify-center gap-2 select-none">
+        <span className="bg-accent-yellow text-primary px-2 py-0.5 rounded-md text-[10px] uppercase font-bold tracking-widest">
+          Update
+        </span>
+        Now enrolling for September 2026 – Limited spaces available!
+      </div>
+
       <motion.nav
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.5, ease: "easeOut" }}
-        className={`fixed top-4 left-1/2 -translate-x-1/2 w-[calc(100%-1.5rem)] sm:w-[calc(100%-2.5rem)] max-w-6xl z-50 transition-all duration-300 rounded-full border ${
+        className={`fixed top-4 left-1/2 -translate-x-1/2 w-[calc(100%-1.5rem)] sm:w-[calc(100%-2.5rem)] max-w-360 z-50 transition-all duration-300 rounded-full border ${
           isScrolled
-            ? "bg-white/90 backdrop-blur-xl border-primary/10 shadow-[0_12px_35px_rgba(30,45,90,0.14)]"
-            : "bg-white/85 backdrop-blur-lg border-primary/10 shadow-[0_8px_22px_rgba(30,45,90,0.1)]"
+            ? "bg-bg-white/90 backdrop-blur-xl border-primary/10 shadow-[0_12px_35px_rgba(30,45,90,0.14)]"
+            : "bg-bg-white/85 backdrop-blur-lg border-primary/10 shadow-[0_8px_22px_rgba(30,45,90,0.1)]"
         }`}
       >
         <div className="px-5 lg:px-8 h-20 flex items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2 cursor-pointer">
             <div className="w-8 h-8 rounded-full bg-linear-to-tr from-accent-teal to-accent-yellow flex items-center justify-center font-heading font-extrabold text-white">
-              TC
+              TT
             </div>
-            <span className="font-heading font-extrabold text-lg text-primary tracking-tight">
-              The Tuition Club
+            <span className="font-heading font-extrabold text-xl text-primary tracking-tight">
+              The Tuition
             </span>
           </Link>
 
           {/* Desktop Nav Links */}
           <div className="hidden lg:flex items-center gap-8">
             <div className="relative group">
-              <button className="text-[15px] font-medium text-primary relative flex items-center gap-1">
+              <button className="text-[15px] font-medium text-primary relative flex items-center gap-1 cursor-pointer">
                 Subjects
                 <ChevronDown
                   size={16}
                   className="text-primary/70 group-hover:rotate-180 transition-transform duration-300"
                 />
+                <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-accent-teal rounded-full"></span>
               </button>
 
               <div className="absolute left-0 top-full pt-5 opacity-0 invisible translate-y-2 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 transition-all duration-300 z-50">
@@ -154,75 +161,70 @@ export default function Navigation() {
                 <TwitterIcon size={14} />
               </a>
             </div>
-            <Link
-              href="#register"
-              className="px-6 py-2.5 rounded-full bg-linear-to-r from-accent-teal to-accent-teal/80 text-white font-semibold text-[14px] hover:shadow-lg transition-all duration-300 hover:scale-105"
-            >
-              Register
-            </Link>
+            <button className="px-5 py-2.5 rounded-full border border-primary/20 text-primary text-[15px] font-semibold hover:bg-primary hover:text-white transition-all duration-300">
+              Log In
+            </button>
+            <button className="px-6 py-2.5 rounded-full bg-accent-teal text-white text-[15px] font-semibold hover:bg-accent-coral hover:scale-105 transition-all duration-300 shadow-lg shadow-accent-teal/30">
+              Register Now
+            </button>
           </div>
 
-          {/* Mobile Menu Button */}
+          {/* Mobile Menu Toggle */}
           <button
-            className="lg:hidden"
+            className="lg:hidden text-primary p-2"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           >
-            {mobileMenuOpen ? (
-              <X size={24} className="text-primary" />
-            ) : (
-              <Menu size={24} className="text-primary" />
-            )}
+            {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
       </motion.nav>
 
-      {/* Mobile Menu */}
+      {/* Mobile Menu Overlay */}
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.3 }}
-            className="fixed top-24 left-4 right-4 z-40 rounded-2xl bg-white border border-primary/10 shadow-xl lg:hidden"
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.95 }}
+            className="fixed inset-0 z-40 bg-bg-white pt-24 px-6 lg:hidden flex flex-col"
           >
-            <div className="p-6 space-y-4">
-              <div>
-                <p className="text-xs font-bold text-primary/50 uppercase mb-3">
+            <div className="flex flex-col gap-6 text-2xl font-heading font-bold text-primary">
+              <details className="group">
+                <summary className="list-none cursor-pointer flex items-center justify-between">
                   Subjects
-                </p>
-                <div className="space-y-2">
+                  <ChevronDown className="group-open:rotate-180 transition-transform duration-300" />
+                </summary>
+                <ul className="mt-4 ml-2 space-y-3 text-lg font-semibold text-primary/80">
                   {SUBJECT_LINKS.map((subject) => (
-                    <Link
-                      key={subject.slug}
-                      href={`/subjects/${subject.slug}`}
-                      className="block px-4 py-2 rounded-lg text-primary hover:bg-bg-alt transition-colors"
-                    >
-                      {subject.label}
-                    </Link>
+                    <li key={subject.slug}>
+                      <Link
+                        href={`/subjects/${subject.slug}`}
+                        onClick={() => setMobileMenuOpen(false)}
+                      >
+                        {subject.label}
+                      </Link>
+                    </li>
                   ))}
-                </div>
-              </div>
+                </ul>
+              </details>
 
-              <div className="border-t border-primary/10 pt-4">
-                <p className="text-xs font-bold text-primary/50 uppercase mb-3">
-                  Navigation
-                </p>
-                <div className="space-y-2">
-                  {NAV_LINKS.map((link) => (
-                    <Link
-                      key={link.href}
-                      href={link.href}
-                      className="block px-4 py-2 rounded-lg text-primary hover:bg-bg-alt transition-colors"
-                    >
-                      {link.label}
-                    </Link>
-                  ))}
-                </div>
-              </div>
+              {NAV_LINKS.map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  {link.label}
+                </Link>
+              ))}
+            </div>
 
-              <button className="w-full mt-4 px-6 py-3 rounded-full bg-linear-to-r from-accent-teal to-accent-teal/80 text-white font-semibold hover:shadow-lg transition-all">
-                Register
+            <div className="mt-8 flex flex-col gap-4">
+              <button className="w-full py-4 rounded-full border-2 border-primary text-primary font-semibold text-lg">
+                Log In
+              </button>
+              <button className="w-full py-4 rounded-full bg-accent-teal text-white font-semibold text-lg shadow-lg shadow-accent-teal/30">
+                Register Now
               </button>
             </div>
           </motion.div>

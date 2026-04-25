@@ -4,8 +4,7 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { Clock, BookOpen, Users, Award } from "lucide-react";
-import Navigation from "@/components/Navigation";
-import Footer from "@/components/Footer";
+import SectionIntro from "@/components/SectionIntro";
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 20 },
@@ -133,8 +132,6 @@ export default function InfoAndPricesPage() {
 
   return (
     <div className="min-h-screen bg-white font-sans text-text-primary">
-      <Navigation />
-
       {/* Hero Section */}
       <motion.section
         className="relative pt-40 pb-20 px-4 bg-linear-to-br from-primary/5 via-transparent to-primary/5 overflow-hidden"
@@ -158,9 +155,9 @@ export default function InfoAndPricesPage() {
               Information & <span className="text-accent-teal">Pricing</span>
             </h1>
             <p className="text-lg md:text-xl text-text-secondary max-w-3xl mx-auto leading-relaxed">
-              The Tuition Club covers a comprehensive array of subjects with
-              flexible timings to suit your needs. We offer affordable rates for
-              families seeking quality home learning support.
+              The Tuition covers a comprehensive array of subjects with flexible
+              timings to suit your needs. We offer affordable rates for families
+              seeking quality home learning support.
             </p>
           </motion.div>
 
@@ -212,20 +209,12 @@ export default function InfoAndPricesPage() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="mb-12"
           >
-            <span className="inline-block px-4 py-2 rounded-full bg-accent-teal/10 text-accent-teal font-semibold text-sm mb-4">
-              On Site Services
-            </span>
-            <h2 className="text-4xl md:text-5xl font-heading font-extrabold text-primary mb-6">
-              On-Site Learning Experience
-            </h2>
-            <p className="text-xl text-text-secondary leading-relaxed max-w-3xl">
-              Our physical learning center provides a dedicated,
-              distraction-free environment where students can focus on their
-              studies with expert tutors, access to comprehensive resources, and
-              the opportunity to learn alongside peers.
-            </p>
+            <SectionIntro
+              badge="On Site Services"
+              title="On-Site Learning Experience"
+              description="Our physical learning center provides a dedicated, distraction-free environment where students can focus on their studies with expert tutors, access to comprehensive resources, and the opportunity to learn alongside peers."
+            />
           </motion.div>
 
           <motion.div
@@ -288,21 +277,14 @@ export default function InfoAndPricesPage() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="mb-12"
           >
-            <span className="inline-block px-4 py-2 rounded-full bg-accent-teal/10 text-accent-teal font-semibold text-sm mb-4">
-              Transparent Pricing
-            </span>
-            <h2 className="text-4xl md:text-5xl font-heading font-extrabold text-primary mb-6">
-              Pricing Plans
-            </h2>
+            <SectionIntro
+              badge="Transparent Pricing"
+              title="Pricing Plans"
+              description="Our flexible pricing varies based on the number of subjects and classes. There is a £10 registration fee per child. Prices include all books needed for the full subject week."
+            />
+
             <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-              <p className="text-lg text-text-secondary max-w-2xl">
-                Our flexible pricing varies based on the number of subjects and
-                classes. There is a £10 registration fee per child.{" "}
-                <strong>Prices include all books needed</strong> for the full
-                subject week.
-              </p>
               <div className="flex gap-2">
                 <motion.button
                   onClick={() => setSelectedTab("primary")}
@@ -499,14 +481,12 @@ export default function InfoAndPricesPage() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="mb-12"
           >
-            <span className="inline-block px-4 py-2 rounded-full bg-accent-coral/10 text-accent-coral font-semibold text-sm mb-4">
-              Save More
-            </span>
-            <h2 className="text-4xl md:text-5xl font-heading font-extrabold text-primary mb-6">
-              Special Discounts Available
-            </h2>
+            <SectionIntro
+              badge="Save More"
+              title="Special Discounts Available"
+              badgeClassName="bg-accent-coral/10 text-accent-coral"
+            />
           </motion.div>
 
           <motion.div
@@ -678,8 +658,8 @@ export default function InfoAndPricesPage() {
               Ready to Get Started?
             </h2>
             <p className="text-xl text-text-secondary mb-8 leading-relaxed">
-              Join hundreds of families who trust The Tuition Club for their
-              learning needs. Register now to secure your place!
+              Join hundreds of families who trust The Tuition for their learning
+              needs. Register now to secure your place!
             </p>
             <Link
               href="#register"
@@ -690,8 +670,6 @@ export default function InfoAndPricesPage() {
           </motion.div>
         </div>
       </motion.section>
-
-      <Footer />
     </div>
   );
 }

@@ -51,7 +51,7 @@ const SUBJECTS: Record<string, SubjectRecord> = {
     syllabusIntro: [
       "Our frameworks for KS1, 2 and 3 follow the How to Code series of books by Max Wainewright, which introduces the basic concepts of coding and programming to young students. Students are able to gain invaluable skills from this series, which covers web design, Scratch, Logo and Python.",
       "Within Book 1 students are taught how to use Scratch and Logo to draw on the screen, and keyboard control is introduced by the Scratch content. Other topics that are covered include giving the computer instructions and solving problems. Book 2 uses variables to keep score and conveys to students how to add sound effects, whilst also looking at loops in Scratch and Logo. The focus of book 3 is on making decisions on what a program should do, through the use of conditional statements (selection). Students are introduced to Python, which within its content includes randomisation, loops and graphics. Lastly, book 4 covers web design, in particular javascript and HTML.",
-      "At the Tuition Club we aim to support home schooling parents in implementing the Two Year Key Stage 3 Project, which gives students the option to complete the three year syllabus over a two year period. However, the implementation of this two year scheme of work is dependant on a child's ability.",
+      "At the Tuition we aim to support home schooling parents in implementing the Two Year Key Stage 3 Project, which gives students the option to complete the three year syllabus over a two year period. However, the implementation of this two year scheme of work is dependant on a child's ability.",
     ],
     ctaLine:
       "Interested? Register today for more information and see what we can do for you.",
