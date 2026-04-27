@@ -357,7 +357,7 @@ export default function HomePageContent() {
               whileInView="visible"
               viewport={{ once: true, margin: "-100px" }}
               variants={fadeUpVariant}
-              className="text-center mb-16"
+              className="text-center mb-14"
             >
               <span className="text-xs font-mono font-bold text-accent-teal tracking-widest uppercase block mb-4">
                 Our Subjects
@@ -365,6 +365,10 @@ export default function HomePageContent() {
               <h2 className="font-heading font-semibold text-[28px] lg:text-[44px] text-primary">
                 A Subject for Every Child&apos;s Passion.
               </h2>
+              <p className="mt-4 text-[17px] text-text-secondary max-w-2xl mx-auto leading-relaxed">
+                Thoughtfully designed learning pathways across core academics,
+                language, creativity, and sport.
+              </p>
             </motion.div>
 
             <motion.div
@@ -372,7 +376,7 @@ export default function HomePageContent() {
               whileInView="visible"
               viewport={{ once: true, margin: "-50px" }}
               variants={staggerContainer}
-              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-6"
             >
               {[
                 {
@@ -381,6 +385,8 @@ export default function HomePageContent() {
                   desc: "Physics, Chemistry, and Biology.",
                   color: "#FFD166",
                   icon: FlaskConical,
+                  span: "lg:col-span-3",
+                  badge: "Lab Thinking",
                 },
                 {
                   name: "Maths",
@@ -388,6 +394,8 @@ export default function HomePageContent() {
                   desc: "Building strong numerical foundations.",
                   color: "#06D6A0",
                   icon: Calculator,
+                  span: "lg:col-span-3",
+                  badge: "Problem Solving",
                 },
                 {
                   name: "History",
@@ -395,6 +403,8 @@ export default function HomePageContent() {
                   desc: "Discovering our past, understanding our future.",
                   color: "#FF6B6B",
                   icon: ScrollText,
+                  span: "lg:col-span-2",
+                  badge: "Critical Reading",
                 },
                 {
                   name: "Geography",
@@ -402,6 +412,8 @@ export default function HomePageContent() {
                   desc: "Exploring the world and its environments.",
                   color: "#A78BFA",
                   icon: Globe,
+                  span: "lg:col-span-2",
+                  badge: "World Awareness",
                 },
                 {
                   name: "English",
@@ -409,6 +421,8 @@ export default function HomePageContent() {
                   desc: "Mastering language, literature, and expression.",
                   color: "#2ABFBF",
                   icon: BookOpen,
+                  span: "lg:col-span-2",
+                  badge: "Communication",
                 },
                 {
                   name: "Computing",
@@ -416,6 +430,8 @@ export default function HomePageContent() {
                   desc: "Coding, logic, and digital literacy.",
                   color: "#1E2D5A",
                   icon: Monitor,
+                  span: "lg:col-span-2",
+                  badge: "Digital Skills",
                 },
                 {
                   name: "Arabic",
@@ -423,6 +439,8 @@ export default function HomePageContent() {
                   desc: "Language learning and calligraphy skills.",
                   color: "#FF9F43",
                   icon: Languages,
+                  span: "lg:col-span-2",
+                  badge: "Language Growth",
                 },
                 {
                   name: "Art",
@@ -430,6 +448,8 @@ export default function HomePageContent() {
                   desc: "Unlocking creativity and expression.",
                   color: "#FF6EB4",
                   icon: Palette,
+                  span: "lg:col-span-2",
+                  badge: "Creative Practice",
                 },
                 {
                   name: "Sport",
@@ -437,42 +457,71 @@ export default function HomePageContent() {
                   desc: "Physical education and teamwork.",
                   color: "#48CAE4",
                   icon: Trophy,
+                  span: "lg:col-span-2",
+                  badge: "Team Spirit",
                 },
               ].map((subject, i) => (
                 <Link
                   key={i}
                   href={`/subjects/${subject.slug}`}
-                  className="block"
+                  className={`block ${subject.span}`}
                 >
                   <motion.div
                     variants={fadeUpVariant}
-                    className="bg-bg-card rounded-3xl p-8 relative group transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-primary/5 cursor-pointer overflow-hidden border border-border-card"
+                    className="h-full rounded-4xl p-6 lg:p-7 relative group transition-all duration-500 hover:-translate-y-1.5 hover:shadow-[0_24px_50px_rgba(30,45,90,0.12)] cursor-pointer overflow-hidden border border-primary/10 bg-white"
                   >
-                    <div className="absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-500 bg-[radial-gradient(#1E2D5A_1px,transparent_1px)] bg-size-[16px_16px]"></div>
+                    <div
+                      className="absolute -right-10 -top-10 w-40 h-40 rounded-full blur-2xl opacity-30 group-hover:opacity-50 transition-opacity duration-500"
+                      style={{ backgroundColor: subject.color }}
+                    ></div>
+                    <div className="absolute inset-0 opacity-0 group-hover:opacity-15 transition-opacity duration-500 bg-[radial-gradient(#1E2D5A_1px,transparent_1px)] bg-size-[16px_16px]"></div>
 
                     <div
-                      className="absolute top-0 left-0 w-full h-2 transition-all duration-300 group-hover:h-36 right-0"
+                      className="absolute top-0 left-0 w-full h-1.5"
                       style={{ backgroundColor: subject.color }}
                     />
                     <div className="relative z-10">
-                      <div className="flex items-start justify-between mb-10 mt-2">
-                        <div className="w-14 h-14 rounded-2xl flex items-center justify-center bg-white text-primary shadow-sm border border-black/5 group-hover:-translate-y-1 transition-transform duration-300 relative overflow-hidden">
+                      <div className="flex items-start justify-between mb-8">
+                        <div className="w-14 h-14 rounded-2xl flex items-center justify-center bg-white text-primary shadow-sm border border-black/5 group-hover:-translate-y-1 group-hover:rotate-3 transition-transform duration-300 relative overflow-hidden">
                           <div
                             className="absolute right-0 top-0 w-full h-full opacity-20"
                             style={{ backgroundColor: subject.color }}
                           ></div>
                           <subject.icon size={26} className="relative z-10" />
                         </div>
-                        <div className="w-8 h-8 rounded-full bg-white/40 backdrop-blur-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                          <ArrowRight size={16} className="text-primary" />
-                        </div>
+                        <span className="text-[10px] uppercase tracking-[0.2em] font-semibold text-primary/60">
+                          {subject.badge}
+                        </span>
                       </div>
-                      <h3 className="font-heading font-extrabold text-[26px] text-primary mb-2 group-hover:text-white transition-colors duration-300">
+
+                      <h3 className="font-heading font-extrabold text-[25px] text-primary mb-2 leading-tight">
                         {subject.name}
                       </h3>
-                      <p className="text-[15px] text-text-secondary group-hover:text-primary transition-colors duration-300 font-medium">
+                      <p className="text-[15px] text-text-secondary leading-relaxed font-medium max-w-80">
                         {subject.desc}
                       </p>
+
+                      <div className="mt-6 inline-flex items-center gap-2 rounded-full border border-primary/15 bg-white/80 px-4 py-2 text-[12px] font-semibold text-primary group-hover:border-primary/30 transition-colors duration-300">
+                        Explore Subject
+                        <ArrowRight
+                          size={14}
+                          className="group-hover:translate-x-1 transition-transform duration-300"
+                        />
+                      </div>
+
+                      <div
+                        className="absolute bottom-0 right-0 w-8 h-8 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                        style={{ backgroundColor: subject.color }}
+                      >
+                        <ArrowRight size={14} className="text-primary" />
+                      </div>
+                    </div>
+
+                    <div className="absolute bottom-0 left-0 right-0 h-1 bg-primary/5">
+                      <div
+                        className="h-full w-0 group-hover:w-full transition-all duration-500"
+                        style={{ backgroundColor: subject.color }}
+                      ></div>
                     </div>
                   </motion.div>
                 </Link>
@@ -484,15 +533,45 @@ export default function HomePageContent() {
               whileInView="visible"
               viewport={{ once: true }}
               variants={fadeUpVariant}
-              className="mt-16 flex flex-col md:flex-row gap-4 justify-center"
+              className="mt-12 rounded-4xl border border-primary/10 bg-linear-to-r from-bg-alt via-white to-bg-alt p-6 md:p-8"
             >
-              {["Subjects", "Info & Prices", "Register"].map((btn, i) => (
-                <button
-                  key={i}
-                  className="w-full md:w-auto px-10 py-5 rounded-full bg-primary text-white font-semibold text-[16px] hover:bg-accent-teal transition-all duration-300 shadow-lg text-center"
+              <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
+                <div>
+                  <p className="text-xs uppercase tracking-[0.18em] text-primary/60 font-semibold">
+                    Personal Learning Paths
+                  </p>
+                  <h3 className="font-heading text-2xl md:text-3xl font-extrabold text-primary mt-1">
+                    Combine core subjects with creativity and confidence.
+                  </h3>
+                </div>
+                <Link
+                  href="/info-and-prices"
+                  className="inline-flex items-center justify-center rounded-full bg-primary px-7 py-3.5 text-white font-semibold hover:bg-accent-teal transition-colors duration-300"
                 >
-                  {btn}
-                </button>
+                  Compare Plans
+                </Link>
+              </div>
+            </motion.div>
+
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={fadeUpVariant}
+              className="mt-10 flex flex-col md:flex-row gap-4 justify-center"
+            >
+              {[
+                { label: "All Subjects", href: "#subjects" },
+                { label: "Info & Prices", href: "/info-and-prices" },
+                { label: "Register", href: "#register" },
+              ].map((btn, i) => (
+                <Link
+                  key={i}
+                  href={btn.href}
+                  className="w-full md:w-auto px-10 py-4 rounded-full bg-primary text-white font-semibold text-[16px] hover:bg-accent-teal transition-all duration-300 shadow-lg text-center"
+                >
+                  {btn.label}
+                </Link>
               ))}
             </motion.div>
           </div>

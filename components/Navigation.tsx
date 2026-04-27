@@ -14,13 +14,12 @@ const SUBJECT_LINKS = [
   { label: "History", slug: "history" },
   { label: "Science", slug: "science" },
   { label: "Maths", slug: "maths" },
-  { label: "Sports", slug: "sport" },
 ];
 
 const NAV_LINKS = [
   { label: "Info & Prices", href: "/info-and-prices" },
   { label: "Online Tuition", href: "/online-tuition" },
-  { label: "Gallery", href: "#gallery" },
+  { label: "Student Showcase", href: "/showcase" },
 ];
 
 const TwitterIcon = ({ size = 24, className = "" }) => (

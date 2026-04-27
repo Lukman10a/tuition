@@ -82,7 +82,7 @@ export default function Footer() {
       title: "Company",
       links: [
         { label: "About Us", href: "#about" },
-        { label: "Gallery", href: "#gallery" },
+        { label: "Student Showcase", href: "/showcase" },
         { label: "Vacancies", href: "#vacancies" },
         { label: "Contact", href: "#contact" },
       ],
