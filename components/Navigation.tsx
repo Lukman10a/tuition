@@ -20,9 +20,7 @@ const SUBJECT_LINKS = [
 const NAV_LINKS = [
   { label: "Info & Prices", href: "/info-and-prices" },
   { label: "Online Tuition", href: "/online-tuition" },
-  { label: "Register", href: "#register" },
   { label: "Gallery", href: "#gallery" },
-  { label: "Vacancies", href: "#vacancies" },
 ];
 
 const TwitterIcon = ({ size = 24, className = "" }) => (
